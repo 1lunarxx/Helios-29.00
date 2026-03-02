@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source">
+      <UniqueIdentifier>{30f60683-48ed-4463-8990-ba2dd27e3894}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Public">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Source\Private">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="SDK">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Helios">
+      <UniqueIdentifier>{26d7da62-64b3-4b54-8ff8-23864fd1e666}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Helios\Public">
+      <UniqueIdentifier>{43c097c8-50ce-477a-aed4-49f3712e343b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Helios\Private">
+      <UniqueIdentifier>{1417aa82-cf85-42f6-be74-8be0b506e103}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Libraries">
+      <UniqueIdentifier>{52381eae-236d-472e-be0b-1a8657791480}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Misc.h">
+      <Filter>Source\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="GameMode.h">
+      <Filter>Source\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Source\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="Inventory.h">
+      <Filter>Source\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="Abilities.h">
+      <Filter>Source\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="Options.h" />
+    <ClInclude Include="GamePhaseLogic.h">
+      <Filter>Source\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="Building.h">
+      <Filter>Source\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="Offsets.h" />
+    <ClInclude Include="Memcury.h">
+      <Filter>Libraries</Filter>
+    </ClInclude>
+    <ClInclude Include="Runtime.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="pch.h" />
+    <ClInclude Include="XP.h">
+      <Filter>Source\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="JSON.hpp">
+      <Filter>Libraries</Filter>
+    </ClInclude>
+    <ClInclude Include="Helios.h">
+      <Filter>Helios\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="Lategame.h">
+      <Filter>Helios\Public</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="SDK\SDK\Basic.cpp">
+      <Filter>SDK</Filter>
+    </ClCompile>
+    <ClCompile Include="SDK\SDK\CoreUObject_functions.cpp">
+      <Filter>SDK</Filter>
+    </ClCompile>
+    <ClCompile Include="SDK\SDK\Engine_functions.cpp">
+      <Filter>SDK</Filter>
+    </ClCompile>
+    <ClCompile Include="SDK\SDK\FortniteGame_functions.cpp">
+      <Filter>SDK</Filter>
+    </ClCompile>
+    <ClCompile Include="dllmain.cpp" />
+    <ClCompile Include="Misc.cpp">
+      <Filter>Source\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="GameMode.cpp">
+      <Filter>Source\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Source\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="Inventory.cpp">
+      <Filter>Source\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="Abilities.cpp">
+      <Filter>Source\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="SDK\SDK\GameplayAbilities_functions.cpp">
+      <Filter>SDK</Filter>
+    </ClCompile>
+    <ClCompile Include="GamePhaseLogic.cpp">
+      <Filter>Source\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="Building.cpp">
+      <Filter>Source\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="Runtime.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="SDK\SDK\FortniteUI_functions.cpp">
+      <Filter>SDK</Filter>
+    </ClCompile>
+    <ClCompile Include="pch.cpp" />
+    <ClCompile Include="SDK\SDK\FortniteAI_functions.cpp">
+      <Filter>SDK</Filter>
+    </ClCompile>
+    <ClCompile Include="SDK\SDK\AscenderCodeRuntime_functions.cpp">
+      <Filter>SDK</Filter>
+    </ClCompile>
+    <ClCompile Include="XP.cpp">
+      <Filter>Source\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="Helios.cpp">
+      <Filter>Helios\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="Lategame.cpp">
+      <Filter>Helios\Private</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
