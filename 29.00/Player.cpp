@@ -900,62 +900,6 @@ void Player::TeleportPlayerPawn(UObject* Context, FFrame& Stack, bool* Ret)
 
 	PlayerPawn->K2_TeleportTo(DestLocation, DestRotation);
 	*Ret = true;
-}	
-
-void Player::ServerReviveFromDBNO(UObject* Context, FFrame& Stack)
-{
-	AFortPlayerPawn* PlayerPawn;
-	AController* EventInstigator;
-
-	Stack.StepCompiledIn(&PlayerPawn);
-	Stack.StepCompiledIn(&EventInstigator);
-	Stack.IncrementCode();
-
-	if (!PlayerPawn || !EventInstigator)
-		return;
-
-	AFortPlayerControllerAthena* PlayerController = static_cast<AFortPlayerControllerAthena*>(PlayerPawn->Controller);
-	if (!PlayerController || !PlayerController->PlayerState)
-		return;
-
-	AFortPlayerStateAthena* PlayerState = static_cast<AFortPlayerStateAthena*>(PlayerController->PlayerState);
-	UFortAbilitySystemComponentAthena* AbilitySystemComponent = static_cast<UFortAbilitySystemComponentAthena*>(PlayerState->AbilitySystemComponent);
-
-	FGameplayEventData Data{};
-	Data.EventTag = PlayerPawn->EventReviveTag;
-	Data.ContextHandle = PlayerState->AbilitySystemComponent->MakeEffectContext();
-	Data.Instigator = EventInstigator;
-	Data.Target = PlayerPawn;
-	Data.TargetData = UAbilitySystemBlueprintLibrary::AbilityTargetDataFromActor(PlayerPawn);
-	Data.TargetTags = PlayerPawn->GameplayTags;
-
-	UAbilitySystemBlueprintLibrary::SendGameplayEventToActor(PlayerPawn, PlayerPawn->EventReviveTag, Data);
-
-	for (auto& Ability : AbilitySystemComponent->ActivatableAbilities.Items)
-	{
-		if (Ability.Ability->Class == UGAB_AthenaDBNO_C::StaticClass())
-		{
-			AbilitySystemComponent->ServerCancelAbility(Ability.Handle, Ability.ActivationInfo);
-			AbilitySystemComponent->ServerEndAbility(Ability.Handle, Ability.ActivationInfo, Ability.ActivationInfo.PredictionKeyWhenActivated);
-			AbilitySystemComponent->ClientCancelAbility(Ability.Handle, Ability.ActivationInfo);
-			AbilitySystemComponent->ClientEndAbility(Ability.Handle, Ability.ActivationInfo);
-			break;
-		}
-	}
-
-	PlayerController->bMarkedAlive = true;
-
-	PlayerPawn->bIsDBNO = false;
-	PlayerPawn->OnRep_IsDBNO();
-
-	PlayerPawn->bPlayedDying = false;
-	PlayerPawn->bIsDying = false;
-
-	PlayerPawn->SetHealth(30);
-	PlayerState->DeathInfo = FDeathInfo{};
-	PlayerState->OnRep_DeathInfo();
-
-	PlayerController->ClientOnPawnRevived(EventInstigator);
 }
 
 void Player::ServerClientIsReadyToRespawn(AFortPlayerControllerAthena* PlayerController)
@@ -992,7 +936,6 @@ void Player::Patch()
 	Runtime::Exec("/Script/FortniteGame.FortPlayerController.ServerPlayEmoteItem", ServerPlayEmoteItem);
 	Runtime::Exec("/Script/FortniteGame.FortPawn.MovingEmoteStopped", MovingEmoteStopped);
 	Runtime::Exec("/Script/FortniteGame.FortMissionLibrary.TeleportPlayerPawn", TeleportPlayerPawn);
-	Runtime::Exec("/Script/FortniteGame.FortPlayerPawn.ServerReviveFromDBNO", ServerReviveFromDBNO);
 
 	Runtime::Hook(EHook::Hook, Helios::Offsets::ClientOnPawnDied, ClientOnPawnDied, (void**)&Originals::ClientOnPawnDied);
 	Runtime::Hook(EHook::Hook, Helios::Offsets::GetPlayerViewPoint, GetPlayerViewPoint, (void**)&Originals::GetPlayerViewPoint);
