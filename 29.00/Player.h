@@ -33,7 +33,6 @@ namespace Player
 	void ServerNotifyPawnHit(UObject*, FFrame&);
 	void ServerPlayEmoteItem(UObject*, FFrame&);
 	void MovingEmoteStopped(UObject*, FFrame&);
-	void ServerReviveFromDBNO(UObject*, FFrame&);
 
 	void OpenActor(UObject*, FFrame&);
 	void CloseActor(UObject*, FFrame&);
